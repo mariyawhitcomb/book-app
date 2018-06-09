@@ -7,7 +7,7 @@ const Book = new Schema ({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'Author'
-    }
+    },
     genre: {
         type: Schema.Types.ObjectId,
         ref: 'Genre'
