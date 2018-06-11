@@ -11,7 +11,8 @@ const Book = new Schema ({
     genre: {
         type: Schema.Types.ObjectId,
         ref: 'Genre'
-    }
+    },
+    rating: Number
 })
 const Author = new Schema ({
     name: String,

@@ -7,6 +7,22 @@
     <title>Read more books</title>
 </head>
 <body>
+    <main>
     {{{ body }}}
+    </main>
+    
+<script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDQ_Qx0obqcYy6e0-yGSUhDVQuYLn3T1cI",
+    authDomain: "project-book-app.firebaseapp.com",
+    databaseURL: "https://project-book-app.firebaseio.com",
+    projectId: "project-book-app",
+    storageBucket: "",
+    messagingSenderId: "307402239130"
+  };
+  firebase.initializeApp(config);
+</script>
 </body>
 </html>
