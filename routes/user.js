@@ -9,3 +9,5 @@ router.post('/login', userController.createLogIn)
 router.get('/logout', userController.logOut)
 router.get('/:id', userController.show)
 router.put('/:id', userController.update)
+
+module.exports = router
