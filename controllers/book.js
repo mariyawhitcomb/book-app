@@ -7,12 +7,12 @@ module.exports = {
         Book.findOne({_id: req.params.id})
         .populate('author')
         .populate('note')
-        res.send('/', {Book})
+        res.send('/:id', {Book})
     },
 //show one particular book
 
     index: (req, res)=>{
-        res.send('hello')
+        res.redirect('/')
 
     }
 }
