@@ -1,4 +1,5 @@
 const { Book } = require('../models/Book')
+
 module.exports = {
     index: (req, res)=>{
         Book.find({})
@@ -6,7 +7,10 @@ module.exports = {
         .limit(25)
         .populate('author')
         .then(books => {
-            res.render('app/index', { tweets })
+            res.render('app/index', { books })
         })
     }
+    // index: (req, res) => {
+    //     res.send('index')
+    // }
 }

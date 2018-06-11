@@ -1,12 +1,18 @@
-const { Book, Author, Genre } = require('../models/Book')
+const { Book, Author } = require('../models/Book')
+const { MyBook, Note } = require('../models/MyBook')
 const request = require('request')
 
 module.exports = {
-    show: () => {
-//show one particular book
+    show: (req, res) => {
+        Book.findOne({_id: req.params.id})
+        .populate('author')
+        .populate('note')
+        res.send('/', {Book})
     },
-    index: ()=>{
-//show all books
+//show one particular book
+
+    index: (req, res)=>{
+        res.send('hello')
 
     }
 }

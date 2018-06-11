@@ -5,12 +5,16 @@ const mongodb = require('mongodb')
 const request = require('request')
 // const superagent = require('superagent')
 // const assert = require('assert')
+
+const routes = require('./routes/index')
 var url = 'mongodb://localhost:27017'
 app.set('view engine', 'hbs')
 
-app.get('/', (req, res)=>{
-    res.render('index', {name: 'read bookss'})
-})
+// app.get('/', (req, res)=>{
+//     res.render('app/index', {name: 'readbooks'})
+// })
+app.use('/', routes)
+
 
 
 

@@ -1,10 +1,10 @@
 const User = require('../models/User')
 
 module.exports = {
-    new: ()=>{
+    signUp: ()=>{
 
     },
-    create: ()=>{
+    createSignUp: ()=>{
 
     },
     logIn: ()=>{
