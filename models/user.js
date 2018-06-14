@@ -24,5 +24,4 @@ User.methods.validPassword = function(password){
 }
 
 
-// module.exports = mongoose.model('User', User)
-module.exports = User
+module.exports = mongoose.model('User', User)

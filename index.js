@@ -20,13 +20,13 @@ app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 require('./config/passport')(passport);
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user
   next()
-})
+});
 
 const routes = require('./routes/index')
 app.use('/', routes)
