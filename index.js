@@ -19,8 +19,7 @@ app.use(session({secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS', resave: true, saveUnini
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
-
-require('./config/passport')(passport)
+require('./config/passport')(passport);
 app.use(passport.initialize())
 app.use(passport.session())
 
