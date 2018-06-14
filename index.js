@@ -32,4 +32,5 @@ app.use(function(req, res, next) {
 const routes = require('./routes/index')
 app.use('/', routes)
 
-app.listen(3000, ()=> console.log('server is running'))
+app.set('port', process.env.PORT || 3000)
+app.listen(app.get('port'), () => console.log("server is running"));
