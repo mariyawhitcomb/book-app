@@ -9,12 +9,13 @@ const Book = new Schema ({
         ref: 'Author'
     },
     rank: Number,
-    note: {
-        type: Schema.Types.ObjectId,
-        ref: 'Note'
-    },
+    // note: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Note'
+    // },
     amazon_product_url: String
 })
+
 const Author = new Schema ({
     name: String,
     books: [Book]

@@ -1,19 +1,19 @@
-<section class="row">
-  <h4>Sign Up:</h4>
+<h2>Signup</h2>
 
-  {{!-- {{#if message}}
-    <p class="alert">{{message}}</p>
-  {{/if}} --}}
-  
-  <form action="" method="POST" class="auth-form">
-    <p class="input-field">
-      <input type="email" name="email" placeholder="Email">
-    </p>
-    <p class="input-field">
-      <input type="password" name="password" placeholder="Password">
-    </p>
-    <p class="input-field">
-      <input type="submit" value="Sign Up" class="btn waves-effect waves-light">
-    </p>
-  </form>
-</section>
+{{#if message}}
+  <div class="alert alert-danger">{{message}}</div>
+{{/if}}
+
+<form method="post" action="/user/signup">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input class="form-control" type="text" name="email" id="email">
+  </div>
+
+  <div class="form-group">
+    <label for="email">Password</label>
+    <input class="form-control" type="password" name="password" id="password">
+  </div>
+
+  <input class="btn btn-default" type="submit">
+</form>

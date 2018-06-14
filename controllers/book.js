@@ -1,6 +1,7 @@
 const { Book, Author } = require('../models/Book')
 const { MyBook, Note } = require('../models/MyBook')
 const request = require('request')
+const db = require('../db/connection')
 
 module.exports = {
     show: (req, res) => {
@@ -12,7 +13,7 @@ module.exports = {
 //show one particular book
 
     index: (req, res)=>{
-        res.redirect('/')
+        res.redirect('/', {  })
 
     }
 }

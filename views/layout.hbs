@@ -4,16 +4,39 @@
       <!--Import Google Icon Font-->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
-      <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
     <body>
-       
-{{{ body }}}
+
+      <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+              <li><a href="/">Home</a></li>
+       {{#if currentUser}}
+              <li><a href="user/logout">Logout</a></li>
+              <li><a href="myBook/index">My Books</a></li>
+
+            {{else}}
+              <li><a href="/user/login">Login</a></li>
+              <li><a href="/user/signup">Signup</a></li>
+            {{/if}}
+      </ul>
+    </div>
+  </nav>
+    <div class="container">
+
+        {{{ body }}}
+
+
+    </div>
+</div>
       <!--JavaScript at end of body for optimized loading-->
-      <script type="text/javascript" src="js/materialize.min.js"></script>
-    </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>    </body>
   </html>
+
+
+
