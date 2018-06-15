@@ -54,6 +54,6 @@ module.exports = {
         // .then(mybooks => {
             // res.render('myBook/index', { mybooks })
         // })
-        res.render('/myBook/index', {books: 'list of my books'})
+        res.render('myBook/index', { booklist: 'hello' })
     }
 }
