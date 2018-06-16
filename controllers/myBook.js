@@ -1,4 +1,4 @@
-const { Note, MyBook } = require('../models/MyBook')
+const  MyBook = require('../models/MyBook')
 
 module.exports = {
     new: (req, res) => {
@@ -14,7 +14,7 @@ module.exports = {
             req.user.notes.push(note);
             req.book.notes.push(note)
             req.user.save(err => {
-              res.redirect(`/myBook/${book._id}`);
+              res.redirect(`/book/${book._id}`);
             });
           });
 

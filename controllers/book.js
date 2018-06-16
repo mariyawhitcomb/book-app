@@ -1,5 +1,5 @@
-const { Book, Author } = require('../models/Book')
-const { MyBook, Note } = require('../models/MyBook')
+const { Book, Author, Note } = require('../models/Book')
+const MyBook = require('../models/MyBook')
 const request = require('request')
 const db = require('../db/connection')
 
@@ -8,11 +8,10 @@ module.exports = {
         Book.findOne({_id: req.params.id})
         .populate('author')
         .populate('note')
-        res.send('/:id', {Book})
+        .then(book=>{
+        res.render('book/show', {book})
+    })
     },
-//show one particular book
-
-
     index: (req, res)=>{
       res.redirect('/', {  })
 }}

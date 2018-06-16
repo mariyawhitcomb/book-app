@@ -1,1 +1,27 @@
-<h1>{{Book}}</h1>
+<div class="card">
+  <div class="card-content">
+    <a class="card-title" href="/book/{{id}}">
+      {{ book.title }}<br>
+      {{ book.description }}
+    </a>
+  </div>
+  <div class="card-action">
+    <a href="/book/{{ author.id }}" class="">{{ book.author.name }}</a>
+    {{!-- <span class="tweet_comments">{{ comments.length }} Comments</span> --}}
+  </div>
+  <div class="card-action">
+    <label>
+        <input id="indeterminate-checkbox" type="checkbox" />
+        <span>My Books</span>
+      </label>
+  </div>
+  </div>
+  <div class="">
+  <div class="">
+          <a class="card-title" href="/">
+          <i class="small material-icons">arrow_back</i>
+          <i class="small material-icons">arrow_back</i>
+          <i class="small material-icons">arrow_back</i>
+          </a>
+  </div>
+  </div>
