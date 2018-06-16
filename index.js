@@ -18,6 +18,7 @@ app.use(flash())
 app.use(session({secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS', resave: true, saveUninitialized: false}))
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
+hbs.registerPartials(__dirname + "/views/partials");
 
 require('./config/passport')(passport);
 app.use(passport.initialize());
