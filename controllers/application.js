@@ -8,7 +8,7 @@ module.exports = {
         .populate('author')
         .then(books => {
             console.log(books)
-            res.render('app/index', { books })
+            res.render('app/index', {books})
         })
     }
 }

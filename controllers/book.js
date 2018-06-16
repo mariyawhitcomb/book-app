@@ -12,8 +12,7 @@ module.exports = {
     },
 //show one particular book
 
-    index: (req, res)=>{
-        res.redirect('/', {  })
 
-    }
-}
+    index: (req, res)=>{
+      res.redirect('/', {  })
+}}

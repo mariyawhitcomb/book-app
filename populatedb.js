@@ -42,13 +42,13 @@ function authorCreate(name, cb) {
 }
 
 
-function bookCreate(title, description, author, rank, amazon_product_url, cb) {
+function bookCreate(title, description, author, rank, note, amazon_product_url, cb) {
   bookdetail = { 
     title: title,
     description: description,
     author: author,
     rank: rank,
-    // note: note,
+    note: [],
     amazon_product_url: amazon_product_url
   }
   var book = new Book(bookdetail);    
@@ -92,10 +92,10 @@ function createGenreAuthors(cb) {
 function createBooks(cb) {
     async.parallel([
         function(callback) {
-          bookCreate('The Name of the Wind (The Kingkiller Chronicle, #1)', 'I have stolen princesses back from sleeping barrow kings. I burned down the town of Trebon. I have spent the night with Felurian and left with both my sanity and my life. I was expelled from the University at a younger age than most people are allowed in. I tread paths by moonlight that others fear to speak of during day. I have talked to Gods, loved women, and written songs that make the minstrels weep.', authors[0], 15, '', callback);
+          bookCreate('The Name of the Wind (The Kingkiller Chronicle, #1)', 'I have stolen princesses back from sleeping barrow kings. I burned down the town of Trebon. I have spent the night with Felurian and left with both my sanity and my life. I was expelled from the University at a younger age than most people are allowed in. I tread paths by moonlight that others fear to speak of during day. I have talked to Gods, loved women, and written songs that make the minstrels weep.', authors[0], 15, [], '', callback);
         },
         function(callback) {
-          bookCreate("The Wise Man's Fear (The Kingkiller Chronicle, #2)", 'Picking up the tale of Kvothe Kingkiller once again, we follow him into exile, into political intrigue, courtship, adventure, love and magic... and further along the path that has turned Kvothe, the mightiest magician of his age, a legend in his own time, into Kote, the unassuming pub landlord.', authors[0], 13, '', callback);
+          bookCreate("The Wise Man's Fear (The Kingkiller Chronicle, #2)", 'Picking up the tale of Kvothe Kingkiller once again, we follow him into exile, into political intrigue, courtship, adventure, love and magic... and further along the path that has turned Kvothe, the mightiest magician of his age, a legend in his own time, into Kote, the unassuming pub landlord.', authors[0], 13, [], '', callback);
         }
         ],
         // optional callback
@@ -110,6 +110,8 @@ async.series([
     createGenreAuthors,
     createBooks,
 ],
+
+
 // Optional callback
 function(err, results) {
     if (err) {

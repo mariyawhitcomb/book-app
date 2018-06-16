@@ -1,8 +1,19 @@
-<h1>hello world</h1>
 {{#if books}}
   <ul class="tweets">
-    {{!-- {{#each Book}} --}}
-       <div>{{books}}</div>
-    {{!-- {{/each}} --}}
+    {{#each books}}
+<div class="card">
+  <div class="card-content">
+    <a class="card-title" href="/book/{{id}}">
+      {{ title }}
+    </a>
+  </div>
+  <div class="card-action">
+    <a href="/book/{{ author.id }}" class="">{{ author.name }}</a>
+    {{!-- <span class="tweet__date">{{ createdAt }}</span> --}}
+    {{!-- <span class="tweet_comments">{{ comments.length }} Comments</span> --}}
+  </div>
+</div>
+    {{/each}}
   </ul>
+
 {{/if}}
