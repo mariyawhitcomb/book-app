@@ -10,7 +10,7 @@ if (!userArgs[0].startsWith('mongodb://')) {
 }
 
 var async = require('async')
-var { Book, Author } = require('./models/Book')
+var { Book, Author, Note } = require('./models/Book')
 var MyBook = require('./models/MyBook')
 var User = require('./models/User')
 
@@ -24,8 +24,9 @@ mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection 
 
 var authors = []
 var books = []
+var notes = []
 
-function authorCreate(name, cb) {
+function noteCteate(name, cb) {
   authordetail = {name: name }
   
   var author = new Author(authordetail);
@@ -38,6 +39,22 @@ function authorCreate(name, cb) {
     console.log('New Author: ' + author);
     authors.push(author)
     cb(null, author)
+  }  );
+}
+
+function noteCreate(content, cb) {
+  notedetail = {content: content }
+  
+  var note = new Note(notedetail);
+       
+  author.save(function (err) {
+    if (err) {
+      cb(err, null)
+      return
+    }
+    console.log('New Note: ' + note);
+    notes.push(note)
+    cb(null, note)
   }  );
 }
 
@@ -69,33 +86,47 @@ function bookCreate(title, description, author, rank, note, amazon_product_url, 
 function createGenreAuthors(cb) {
     async.parallel([
         function(callback) {
-          authorCreate('Patrick Rothfuss', callback);
+          noteCteate('Patrick Rothfuss', callback);
         },
         function(callback) {
-          authorCreate('Ben Bova', callback);
+          noteCteate('Ben Bova', callback);
         },
         function(callback) {
-          authorCreate('Isaac Asimov', callback);
+          noteCteate('Isaac Asimov', callback);
         },
         function(callback) {
-          authorCreate('Bob Billings', callback);
+          noteCteate('Bob Billings', callback);
         },
         function(callback) {
-          authorCreate('Jim Jones', callback);
+          noteCteate('Jim Jones', callback);
         },
         ],
         // optional callback
         cb);
 }
-
+function createNotes(cb) {
+  async.parallel([
+      function(callback) {
+        noteCteate('best book ever', callback);
+      },
+      function(callback) {
+        noteCteate('not so bad', callback);
+      },
+      function(callback) {
+        noteCteate('i did not like it', callback);
+      },
+      ],
+      // optional callback
+      cb);
+}
 
 function createBooks(cb) {
     async.parallel([
         function(callback) {
-          bookCreate('The Name of the Wind (The Kingkiller Chronicle, #1)', 'I have stolen princesses back from sleeping barrow kings. I burned down the town of Trebon. I have spent the night with Felurian and left with both my sanity and my life. I was expelled from the University at a younger age than most people are allowed in. I tread paths by moonlight that others fear to speak of during day. I have talked to Gods, loved women, and written songs that make the minstrels weep.', authors[0], 15, [], '', callback);
+          bookCreate('The Name of the Wind (The Kingkiller Chronicle, #1)', 'I have stolen princesses back from sleeping barrow kings. I burned down the town of Trebon. I have spent the night with Felurian and left with both my sanity and my life. I was expelled from the University at a younger age than most people are allowed in. I tread paths by moonlight that others fear to speak of during day. I have talked to Gods, loved women, and written songs that make the minstrels weep.', authors[0], 15, 'best book ever', '', callback);
         },
         function(callback) {
-          bookCreate("The Wise Man's Fear (The Kingkiller Chronicle, #2)", 'Picking up the tale of Kvothe Kingkiller once again, we follow him into exile, into political intrigue, courtship, adventure, love and magic... and further along the path that has turned Kvothe, the mightiest magician of his age, a legend in his own time, into Kote, the unassuming pub landlord.', authors[0], 13, [], '', callback);
+          bookCreate("The Wise Man's Fear (The Kingkiller Chronicle, #2)", 'Picking up the tale of Kvothe Kingkiller once again, we follow him into exile, into political intrigue, courtship, adventure, love and magic... and further along the path that has turned Kvothe, the mightiest magician of his age, a legend in his own time, into Kote, the unassuming pub landlord.', authors[0], 13, 'not so bad', '', callback);
         }
         ],
         // optional callback
@@ -109,6 +140,7 @@ function createBooks(cb) {
 async.series([
     createGenreAuthors,
     createBooks,
+    createNotes,
 ],
 
 
