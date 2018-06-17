@@ -7,7 +7,9 @@
   </div>
   <div class="card-action">
     <a href="/book/{{ author.id }}" class="">{{ book.author.name }}</a>
+    {{#each notes}}
     <span class="tweet_comments">{{ book.notes.content }} </span>
+    {{/each}}
   </div>
   <div class="card-action">
     <label>

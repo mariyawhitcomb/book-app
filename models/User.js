@@ -1,6 +1,7 @@
 const mongoose = require('../db/connection')
 const Schema = mongoose.Schema
 const bcrypt = require('bcrypt-nodejs')
+const Note = require('../models/Book')
 
 const User = new mongoose.Schema({
     local: {
@@ -13,7 +14,7 @@ const User = new mongoose.Schema({
     }],
     notes: [{
         type: Schema.Types.ObjectId,
-        ref: 'Note'
+        ref: Note
     }]
 })
 User.methods.encrypt = function(password){
