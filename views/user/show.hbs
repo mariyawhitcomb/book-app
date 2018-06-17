@@ -1,0 +1,12 @@
+<section class="profile">
+  <h2>Hello {{user.local.email}}</h2>
+  {{#if user.books}}
+    <div class="tweets">
+      {{#each user.books}}
+         {{> 'book'}}
+      {{/each}}
+    </div>
+  {{else}}
+    <p>No Books yet</p>
+  {{/if}}
+</section>

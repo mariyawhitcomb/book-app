@@ -11,7 +11,6 @@ if (!userArgs[0].startsWith('mongodb://')) {
 
 var async = require('async')
 var { Book, Author, Note } = require('./models/Book')
-var MyBook = require('./models/MyBook')
 var User = require('./models/User')
 
 
@@ -42,12 +41,12 @@ function noteCteate(name, cb) {
   }  );
 }
 
-function noteCreate(content, cb) {
+function noteCteate (content, cb) {
   notedetail = {content: content }
   
   var note = new Note(notedetail);
        
-  author.save(function (err) {
+  note.save(function (err) {
     if (err) {
       cb(err, null)
       return

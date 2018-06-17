@@ -34,15 +34,10 @@ module.exports = {
         res.redirect('/')
 
     },
-    // update: ()=>{
-
-    // },
     show: (req, res)=>{
         User.findOne({ _id: req.params.id })
-        .populate({
-            path: 'books',
-            options: {limit: 10, sort: {createdAt: -1}}
-        })
+        console.log('show user')
+        .populate('books')
         .then(user => {
             res.render('user/show', { user })
         })

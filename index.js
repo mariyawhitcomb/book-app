@@ -14,6 +14,7 @@ const mogoose = require('mongoose')
 // const assert = require('assert')
 app.use(cookieParser())
 app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
 app.use(flash())
 app.use(session({secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS', resave: true, saveUninitialized: false}))
 app.set('view engine', 'hbs');
