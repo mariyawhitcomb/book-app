@@ -23,9 +23,9 @@ mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection 
 
 var authors = []
 var books = []
-var notes = []
+var notes = [];
 
-function noteCteate(name, cb) {
+function authorCreate(name, cb) {
   authordetail = {name: name }
   
   var author = new Author(authordetail);
@@ -42,7 +42,9 @@ function noteCteate(name, cb) {
 }
 
 function noteCteate (content, cb) {
-  notedetail = {content: content }
+  notedetail = {
+    content: content,
+   }
   
   var note = new Note(notedetail);
        
@@ -85,19 +87,19 @@ function bookCreate(title, description, author, rank, note, amazon_product_url, 
 function createGenreAuthors(cb) {
     async.parallel([
         function(callback) {
-          noteCteate('Patrick Rothfuss', callback);
+          authorCreate('Patrick Rothfuss', callback);
         },
         function(callback) {
-          noteCteate('Ben Bova', callback);
+          authorCreate('Ben Bova', callback);
         },
         function(callback) {
-          noteCteate('Isaac Asimov', callback);
+          authorCreate('Isaac Asimov', callback);
         },
         function(callback) {
-          noteCteate('Bob Billings', callback);
+          authorCreate('Bob Billings', callback);
         },
         function(callback) {
-          noteCteate('Jim Jones', callback);
+          authorCreate('Jim Jones', callback);
         },
         ],
         // optional callback

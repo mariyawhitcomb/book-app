@@ -29,10 +29,11 @@ module.exports = {
                 res.redirect(`/book/${book._id}`)
             })
         })
-        User.findOne({_id: req.user._id})
+        User.findOne({_id: req.user.id})
         .then(user=>{
             user.notes.push({
-                content
+                content,
+                author: req.user.id
             })
             user.save(err =>{
                 console.log('user saved')

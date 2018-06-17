@@ -35,11 +35,16 @@ module.exports = {
 
     },
     show: (req, res)=>{
-        User.findOne({ _id: req.params.id })
-        console.log('show user')
-        .populate('books')
+        User.findOne({ _id: req.user._id })
+        .exec(function(err, user){
+            User.populate(user.notes, { path: 'note'}, function(err, notes){
+                user.notes = notes
+                console.log('it works')
+            })
+
+        })
         .then(user => {
-            res.render('user/show', { user })
+            res.render('user/show', {user})
         })
 
     }

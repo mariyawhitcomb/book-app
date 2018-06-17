@@ -14,7 +14,7 @@ const User = new mongoose.Schema({
     }],
     notes: [{
         type: Schema.Types.ObjectId,
-        ref: Note
+        ref: 'Note'
     }]
 })
 User.methods.encrypt = function(password){
