@@ -53,18 +53,7 @@ module.exports = {
         //     })
     // })
 },
-    update: (req, res)=>{
-        Book.findOne({_id: req.params.id})
-        .then(book=>{
-           var allNotes = Note.find({book: book._id}).toArray()
-           allNotes.forEach(note => book.notes.push(note))
-           book.save(err => {
-               res.redirect('book/show')
-           })
-        })
-
-
-    },
+    
     destroy: (req, res)=>{
 
     },

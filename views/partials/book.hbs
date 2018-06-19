@@ -11,10 +11,17 @@
     <span class="tweet_comments">{{ book.notes.content }} </span>
     {{/each}}
   </div>
+  {{!-- {{log currentUser}} --}}
   <div class="card-action">
-    <label>
+    <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row">
+      <input type="hidden" name="bookId" value="{{book._id}}">
+      <p class="input-field inline col s2">
+        <input class="btn" type="submit" value="Save to My Books">
+      </p>
+    </form>
+    {{!-- <label>
         <input id="indeterminate-checkbox" type="checkbox" />
         <span>My Books</span>
-      </label>
+      </label> --}}
   </div>
   </div>
