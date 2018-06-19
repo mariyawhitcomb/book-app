@@ -10,28 +10,27 @@ const Note = new Schema({
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
+    },
+    book: {
+        type: Schema.Types.ObjectId,
+        ref: 'Book'
     }
 });
 
 const Book = new Schema ({
     title: String,
     description: String,
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'Author'
-    },
+    author: String,
     rank: Number,
     notes: [Note],
     amazon_product_url: String
 })
 
-const Author = new Schema ({
-    name: String,
-    books: [Book]
+// const Author = new Schema ({
+//     name: String,
+//     books: [Book]
 
-})
 module.exports = {
     Book: mongoose.model('Book', Book),
-    Author: mongoose.model('Author', Author),
     Note: mongoose.model('Note', Note)
 }

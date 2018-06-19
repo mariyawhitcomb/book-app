@@ -2,7 +2,13 @@ const User = require('../models/User')
 const express = require('express')
 const passport = require('passport')
 // const router = express.Router()
-
+// function myBooks(){
+// let checkbox = document.querySelectorAll('#indeterminate-checkbox')
+// for(let i = 0; i<checkbox.length; i++){
+//     if(checkbox[i].checked){
+//         User.books.push(Book.findOne({_id: req.params.id}))
+//     }
+// }}
 module.exports = {
     signup: (req, res)=>{
         res.render('user/signup', {message: req.flash('signupMessage')})
@@ -35,17 +41,19 @@ module.exports = {
 
     },
     show: (req, res)=>{
-        User.findOne({ _id: req.user._id })
-        .exec(function(err, user){
-            User.populate(user.notes, { path: 'note'}, function(err, notes){
-                user.notes = notes
-                console.log('it works')
-            })
-
-        })
+        User.findOne({ _id: req.params.id })
+        .populate('notes')
         .then(user => {
+            // Notes.find({author: user._id})
+            // .then(usernotes=>{
+            //     usernotes.forEach(note=>{
+            //         user.notes.push(note)
+            //     })
+            // })
+            console.log(user.notes)
             res.render('user/show', {user})
         })
+
 
     }
 }

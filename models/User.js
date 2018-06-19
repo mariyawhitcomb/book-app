@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt-nodejs')
 const Note = require('../models/Book')
 
 const User = new mongoose.Schema({
+    // _id: Schema.Types.ObjectId,
     local: {
         email: String,
         password: String,

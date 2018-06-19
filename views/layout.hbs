@@ -17,8 +17,10 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li><a href="/">Home</a></li>
        {{#if currentUser}}
+       {{log 'hi' }}
+       {{log currentUser}}
               <li><a href="/user/logout">Logout</a></li>
-              <li><a href="/user/{{req.user._id}}">My Books</a></li>
+              <li><a href="/user/{{currentUser._id}}">My Books</a></li>
 
             {{else}}
               <li><a href="/user/login">Login</a></li>
