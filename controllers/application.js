@@ -8,7 +8,6 @@ module.exports = {
         .sort({rank: -1})
         .limit(25)
         .then(books => {
-            console.log(books)
             res.render('app/index', {books})
         })
       }

@@ -26,9 +26,9 @@ const Book = new Schema ({
     amazon_product_url: String
 })
 
-// const Author = new Schema ({
-//     name: String,
-//     books: [Book]
+// Note.post('save', function(){
+//     User.findOne()
+// })
 
 module.exports = {
     Book: mongoose.model('Book', Book),

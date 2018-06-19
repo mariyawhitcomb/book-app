@@ -14,9 +14,6 @@ module.exports = {
         res.render('user/signup', {message: req.flash('signupMessage')})
     },
     createSignup: (req, res)=>{
-
-        console.log(req.body)
-
         var signupStrategy = passport.authenticate('local-signup', {
             successRedirect: '/',
             failureRedirect: '/user/signup',
@@ -50,7 +47,6 @@ module.exports = {
             //         user.notes.push(note)
             //     })
             // })
-            console.log(user.notes)
             res.render('user/show', {user})
         })
 
