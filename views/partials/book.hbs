@@ -3,8 +3,8 @@
     <a class="card-title" href="/book/{{book._id}}">
       {{ book.title }}<br>
       {{ book.description }}<br>
-      {{ currentUser._id }}<br>
-      {{ book.users}}
+      {{!-- {{ currentUser._id }}<br>
+      {{ book.users}} --}}
     </a>
   </div>
   <div class="card-action">
@@ -14,17 +14,24 @@
     {{/each}}
   </div>
   {{#if currentUser}}
-  {{!-- {{#if book.users includes currentUser}} --}}
-  {{!-- <h1>DELETE</h1> --}}
-  {{!-- {{#else}} --}}
-  <div class="card-action">
-    <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row">
-      <input type="hidden" name="bookId" value="{{book._id}}">
-      <p class="input-field inline col s2">
-        <input class="btn" type="submit" value="Save to My Books">
-      </p>
-    </form>
-  </div>
-  {{!-- {{/if}} --}}
+  {{#if check}}
+    <div class="card-action">
+      <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row">
+        <input type="hidden" name="bookId" value="{{book._id}}">
+        <p class="input-field inline col s2">
+          <input class="btn" type="submit" value="Delete from my books">
+        </p>
+      </form>
+    </div>
+    {{else}}
+    <div class="card-action">
+      <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row">
+        <input type="hidden" name="bookId" value="{{book._id}}">
+        <p class="input-field inline col s2">
+          <input class="btn" type="submit" value="Save to My Books">
+        </p>
+      </form>
+    </div>
+    {{/if}}
   {{/if}}
   </div>

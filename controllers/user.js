@@ -44,7 +44,7 @@ module.exports = {
         .then(user=>{
             Book.findOne({_id: req.body.bookId}).then(book => {
                 user.books.push(book)
-                book.users.push(user)
+                book.users.push(user._id)
                 book.save()
                 user.save(err => {
                     if (err) console.log(err)
@@ -53,12 +53,10 @@ module.exports = {
             })
         })
     },
-    // show: (req, res)=>{
-    //     Book.findOne({_id: req.params._id})
-    //     .populate('notes')
-    //     .populate('users')
-    //     .then(book=>{
-    //         res.render('book/show', {book})
-    //     })
-    // }
+    delete: (req, res)=>{
+        User.findOne({_id: req.user._id})
+        .then(user=>{
+
+        })
+    }
 }

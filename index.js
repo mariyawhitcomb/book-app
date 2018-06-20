@@ -12,6 +12,7 @@ const mogoose = require('mongoose')
 const morgan = require('morgan')
 const override = require('method-override')
 const moment = require('moment');
+const helpers = require('handlebars-helpers')()
 
 // const superagent = require('superagent')
 // const assert = require('assert')
@@ -23,10 +24,18 @@ app.use(morgan('dev'))
 app.use(flash())
 app.use(session({secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS', resave: true, saveUninitialized: false}))
 app.set('view engine', 'hbs');
-hbs.registerHelper('custom', function(){
-    book.users.find(function(obj){
-    return obj._id = currentUser._id
-  })
+hbs.registerHelper('ifcustom', function(id, arr, options){
+  if(arr.some(function(user){
+   return user._id === id
+    
+  })) 
+//  if (arr.find(function(user){
+//     return user._id === id
+//   }))
+   {
+    return options.inverse(this)
+  }
+  return options.fn(this)
 })
 app.use(express.static(__dirname + '/public'));
 hbs.registerPartials(__dirname + "/views/partials");

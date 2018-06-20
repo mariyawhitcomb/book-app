@@ -5,14 +5,23 @@ const db = require('../db/connection')
 
 module.exports = {
     show: (req, res) => {
-        Book.findOne({_id: req.params.id})
-        .populate('notes')
-        .populate('users')
-        .then(book=>{
-            Note.find({book: book._id})
+        var check
+        Promise.all([
+            User.findOne({_id: req.user._id}),
+            Book.findOne({_id: req.params.id})
+            .populate('notes')
+            .populate('users')
+        ]).then(values=>{
+            Note.find({book: values[1]._id})
             .populate('author')
-            res.render('book/show', {book})
-        })
+            console.log(`this is user${values[0]._id}`)
+
+            check = values[1].users.map(user=>{user._id}).includes(values[0]._id)
+            console.log(values[1].users)
+
+            console.log(check)
+            res.render('book/show', {book: values[1], check})
+        })        
     },
     
 
