@@ -10,15 +10,18 @@ module.exports = {
             User.findOne({_id: req.user._id}),
             Book.findOne({_id: req.params.id})
             .populate('notes')
-            .populate('users')
+            // .populate('users')
         ]).then(values=>{
             Note.find({book: values[1]._id})
             .populate('author')
-            console.log(`this is user${values[0]._id}`)
-
-            check = values[1].users.map(user=>{user._id}).includes(values[0]._id)
-            console.log(values[1].users)
-
+            console.log(`this is user ${values[0]._id}`)
+            if(values[1].users.some(function(user){
+                console.log(user)
+                user == values[0]._id
+                return true
+            })){
+                check = true
+            }
             console.log(check)
             res.render('book/show', {book: values[1], check})
         })        
