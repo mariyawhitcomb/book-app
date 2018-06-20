@@ -1,5 +1,7 @@
 const mongoose = require('../db/connection')
 const Schema = mongoose.Schema
+const moment = require('moment')
+const User = require('../models/User')
 
 const Note = new Schema({
     content: String,
@@ -23,12 +25,21 @@ const Book = new Schema ({
     author: String,
     rank: Number,
     notes: [Note],
-    amazon_product_url: String
+    amazon_product_url: String,
+    users: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 })
 
 // Note.post('save', function(){
 //     User.findOne()
 // })
+Note
+.virtual('createdAtFormatted')
+.get(function () {
+  return moment(this.createdAt).format('MMMM Do, YYYY');
+});
 
 module.exports = {
     Book: mongoose.model('Book', Book),

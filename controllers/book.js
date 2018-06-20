@@ -7,7 +7,10 @@ module.exports = {
     show: (req, res) => {
         Book.findOne({_id: req.params.id})
         .populate('notes')
+        .populate('users')
         .then(book=>{
+            Note.find({book: book._id})
+            .populate('author')
             res.render('book/show', {book})
         })
     },

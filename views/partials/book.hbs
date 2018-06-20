@@ -3,6 +3,8 @@
     <a class="card-title" href="/book/{{book._id}}">
       {{ book.title }}<br>
       {{ book.description }}<br>
+      {{ currentUser._id }}<br>
+      {{ book.users}}
     </a>
   </div>
   <div class="card-action">
@@ -11,7 +13,10 @@
     <span class="tweet_comments">{{ book.notes.content }} </span>
     {{/each}}
   </div>
-  {{!-- {{log currentUser}} --}}
+  {{#if currentUser}}
+  {{!-- {{#if book.users includes currentUser}} --}}
+  {{!-- <h1>DELETE</h1> --}}
+  {{!-- {{#else}} --}}
   <div class="card-action">
     <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row">
       <input type="hidden" name="bookId" value="{{book._id}}">
@@ -19,9 +24,7 @@
         <input class="btn" type="submit" value="Save to My Books">
       </p>
     </form>
-    {{!-- <label>
-        <input id="indeterminate-checkbox" type="checkbox" />
-        <span>My Books</span>
-      </label> --}}
   </div>
+  {{!-- {{/if}} --}}
+  {{/if}}
   </div>

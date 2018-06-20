@@ -11,6 +11,7 @@ const passport = require('passport')
 const mogoose = require('mongoose')
 const morgan = require('morgan')
 const override = require('method-override')
+const moment = require('moment');
 
 // const superagent = require('superagent')
 // const assert = require('assert')
@@ -22,6 +23,11 @@ app.use(morgan('dev'))
 app.use(flash())
 app.use(session({secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS', resave: true, saveUninitialized: false}))
 app.set('view engine', 'hbs');
+hbs.registerHelper('custom', function(){
+    book.users.find(function(obj){
+    return obj._id = currentUser._id
+  })
+})
 app.use(express.static(__dirname + '/public'));
 hbs.registerPartials(__dirname + "/views/partials");
 

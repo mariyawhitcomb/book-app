@@ -8,7 +8,8 @@ bookSeedData.forEach(book => {
         description: book.book_details[0].description,
         rank: book.rank,
         amazon_product_url: book.amazon_product_url,
-        notes: []
+        notes: [],
+        users: []
     })
     .then(doneBook => {
         doneBook.save()

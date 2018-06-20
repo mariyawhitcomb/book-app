@@ -1,7 +1,7 @@
 const User = require('../models/User')
 const express = require('express')
 const passport = require('passport')
-const { Book } = require('../models/Book')
+const { Book, Note } = require('../models/Book')
 
 module.exports = {
     signup: (req, res)=>{
@@ -31,26 +31,34 @@ module.exports = {
         res.redirect('/')
 
     },
-    show: (req, res)=>{
+    index: (req, res)=>{
         User.findOne({ _id: req.params.id })
         .populate('notes')
         .populate('books')
         .then(user => {
-            res.render('user/show', {user})
+            res.render('user/mybooks', {user})
         })
     },
     update: (req, res)=>{
         User.findOne({_id: req.user._id})
         .then(user=>{
-            console.log(`HELLOOOOO${user}`)
             Book.findOne({_id: req.body.bookId}).then(book => {
-                console.log(`THIS${book}`)
                 user.books.push(book)
+                book.users.push(user)
+                book.save()
                 user.save(err => {
                     if (err) console.log(err)
                     res.redirect('/')
                 })
             })
         })
-    }
+    },
+    // show: (req, res)=>{
+    //     Book.findOne({_id: req.params._id})
+    //     .populate('notes')
+    //     .populate('users')
+    //     .then(book=>{
+    //         res.render('book/show', {book})
+    //     })
+    // }
 }

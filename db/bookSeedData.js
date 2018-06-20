@@ -1,5 +1,6 @@
 module.exports = [
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -42,6 +43,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -85,6 +87,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -126,6 +129,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -169,6 +173,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -213,6 +218,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -258,6 +264,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -299,6 +306,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -341,6 +349,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -390,6 +399,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -431,6 +441,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -472,6 +483,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -512,6 +524,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -556,6 +569,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
@@ -599,6 +613,7 @@ module.exports = [
     ]
   },
   {
+    "users": [],
     "notes": [],
     "list_name": "Combined Print and E-Book Fiction",
     "display_name": "Combined Print & E-Book Fiction",
