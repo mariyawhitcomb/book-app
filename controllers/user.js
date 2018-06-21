@@ -54,7 +54,23 @@ module.exports = {
         })
     },
     delete: (req, res)=>{
-        res.redirect('/')
+        Note.findOne({_id: req.body.noteId})
+        .then(note=>{
+            Book.findOne({_id: note.book._id})
+            .then(book=>{
+                console.log(book)
+                // user filter
+             console.log(book.notes.forEach(element => {if (element._id === note._id) {return book.notes.indexOf(element)}}))   
+            }).then(()=>{
+                book.save()
+            }).then(()=>{
+                note.remove()
+            })
+                res.redirect('/')
+    
+           
+
+        })
     }
     
 }

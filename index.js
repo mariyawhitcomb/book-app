@@ -41,6 +41,7 @@ require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use("/public", express.static(__dirname + "/public"));
+
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user
   next()

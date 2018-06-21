@@ -3,26 +3,35 @@ const User =require('../models/User')
 const request = require('request')
 const db = require('../db/connection')
 const getCheck = require('../public/script')
-var check
+var check = false
 
 module.exports = {
     show: (req, res) => {
+        check = false
+        // if req.user
+        //    - find book and populate notes
+        //    - check if req.user._id is in book.users
+        //    - render book/show with book and whether user has saved book flag
+        // else 
+        //    - render book/show without 
+        
             Promise.all([
                 User.findOne({_id: req.user._id}),
                 Book.findOne({_id: req.params.id})
                 .populate('notes')
-                // .populate('users')
             ]).then(values=>{
                 Note.find({book: values[1]._id})
                 .populate('author')
-                console.log(values[1].users.some(user=>(user == values[0]._id)))
-        //    if(values[1].users.includes(values[0]._id)){
-        //         check = true
-        //         return check
-        //    }
-        //  check = values[1].users.includes(`"${values[0]._id}"`)
-                res.render('book/show', {book: values[1], check: true})
+                console.log(values[1].users)
+                console.log(values[0]._id)
+                if (values[1].users.indexOf(values[0]._id)>=0){
+                     check = true
+                }
+                console.log(check)
+                res.render('book/show', { book: values[1], check })
+
                 })
+                
     },
     createnote: (req, res)=>{
         let { content } = req.body
