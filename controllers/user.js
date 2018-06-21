@@ -44,7 +44,7 @@ module.exports = {
         .then(user=>{
             Book.findOne({_id: req.body.bookId}).then(book => {
                 user.books.push(book)
-                book.users.push(user._id)
+                book.users.push(user)
                 book.save()
                 user.save(err => {
                     if (err) console.log(err)
@@ -54,9 +54,7 @@ module.exports = {
         })
     },
     delete: (req, res)=>{
-        User.findOne({_id: req.user._id})
-        .then(user=>{
-
-        })
+        res.redirect('/')
     }
+    
 }

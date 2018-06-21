@@ -29,9 +29,6 @@ hbs.registerHelper('ifcustom', function(id, arr, options){
    return user._id === id
     
   })) 
-//  if (arr.find(function(user){
-//     return user._id === id
-//   }))
    {
     return options.inverse(this)
   }
@@ -43,7 +40,7 @@ hbs.registerPartials(__dirname + "/views/partials");
 require('./config/passport')(passport);
 app.use(passport.initialize());
 app.use(passport.session());
-
+app.use("/public", express.static(__dirname + "/public"));
 app.use(function(req, res, next) {
   res.locals.currentUser = req.user
   next()

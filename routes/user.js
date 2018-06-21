@@ -9,6 +9,6 @@ router.post('/login', userController.createLogin)
 router.get('/logout', userController.logout)
 router.get('/mybooks/:id', userController.index)
 router.put('/:id', userController.update)
-// router.get('/:bookId', userController.show)
+router.delete('/notes/:noteId', userController.delete)
 
 module.exports = router

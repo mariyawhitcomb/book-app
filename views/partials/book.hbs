@@ -13,16 +13,9 @@
     <span class="tweet_comments">{{ book.notes.content }} </span>
     {{/each}}
   </div>
-  {{#if currentUser}}
+  {{!-- {{#if currentUser}} --}}
   {{#if check}}
-    <div class="card-action">
-      <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row">
-        <input type="hidden" name="bookId" value="{{book._id}}">
-        <p class="input-field inline col s2">
-          <input class="btn" type="submit" value="Delete from my books">
-        </p>
-      </form>
-    </div>
+    
     {{else}}
     <div class="card-action">
       <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row">
@@ -33,5 +26,5 @@
       </form>
     </div>
     {{/if}}
-  {{/if}}
+  {{!-- {{/if}} --}}
   </div>
