@@ -2,7 +2,6 @@ const { Book, Note } = require('../models/Book')
 const User =require('../models/User')
 const request = require('request')
 const db = require('../db/connection')
-const getCheck = require('../public/script')
 var check = false
 
 module.exports = {
@@ -14,7 +13,7 @@ module.exports = {
         //    - render book/show with book and whether user has saved book flag
         // else 
         //    - render book/show without 
-        
+        if(req.user){
             Promise.all([
                 User.findOne({_id: req.user._id}),
                 Book.findOne({_id: req.params.id})
@@ -22,15 +21,19 @@ module.exports = {
             ]).then(values=>{
                 Note.find({book: values[1]._id})
                 .populate('author')
-                console.log(values[1].users)
-                console.log(values[0]._id)
                 if (values[1].users.indexOf(values[0]._id)>=0){
                      check = true
                 }
-                console.log(check)
                 res.render('book/show', { book: values[1], check })
 
-                })
+                })}
+        else{
+            Book.findOne({_id: req.params.id})
+            .populate('notes')
+            .then(book=>{
+                res.render('book/show', {book})
+            })
+        }
                 
     },
     createnote: (req, res)=>{
@@ -44,18 +47,18 @@ module.exports = {
                 author: values[0]._id,
                 book: values[1]._id
             })
-            .then(note=>{
-                values[0].notes.push(note)
-                values[1].notes.push(note)
-            })
-            .then(()=>{
-                values[0].save()
-                values[1].save()
-            })
-            .then(()=>{
+            values[1].populate('notes').save()
+            // .then(note=>{
+            //     values[0].notes.push(note)
+            //     values[1].notes.push(note)
+            // })
+            // .then(()=>{
+            //     values[0].save()
+            //     values[1].save()
+            // })
                 res.render('book/show', {book: values[1]})
 
-            })
+           
         })
 },
     // update: (req, res)=>{

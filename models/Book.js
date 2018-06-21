@@ -24,7 +24,10 @@ const Book = new Schema ({
     description: String,
     author: String,
     rank: Number,
-    notes: [Note],
+    notes: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Note'
+    }],
     amazon_product_url: String,
     users: [{
         type: Schema.Types.ObjectId,
@@ -32,9 +35,13 @@ const Book = new Schema ({
     }]
 })
 
-// Note.post('save', function(){
-//     User.findOne()
-// })
+// Note.pre('remove', function(next) {
+//     // 'this' is the client being removed. Provide callbacks here if you want
+//     // to be notified of the calls' result.
+//     Sweepstakes.remove({client_id: this._id}).exec();
+//     Submission.remove({client_id: this._id}).exec();
+//     next();
+// });
 Note
 .virtual('createdAtFormatted')
 .get(function () {

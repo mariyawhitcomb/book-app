@@ -1,21 +1,20 @@
 <div class="card">
   <div class="card-content">
     <a class="card-title" href="/book/{{book._id}}">
-      {{ book.title }}<br>
+      <p>{{ book.title }} by {{ book.author}}</p><br>
       {{ book.description }}<br>
-      {{!-- {{ currentUser._id }}<br>
-      {{ book.users}} --}}
     </a>
   </div>
+   <div class="card-action">
+      <a href="{{ book.amazon_product_url }}" class="">Buy it</a>
+  </div> 
+  {{#each book.notes}}
   <div class="card-action">
-    <a href="" class="">{{ book.author}}</a>
-    {{#each book.notes}}
     <span class="tweet_comments">{{ book.notes.content }} </span>
-    {{/each}}
   </div>
+  {{/each}}
   {{#if currentUser}}
   {{#if check}}
-  <h6>you saved it</h6>
   {{else}}
     <div class="card-action">
       <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row">
