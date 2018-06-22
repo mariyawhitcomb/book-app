@@ -25,8 +25,11 @@ app.use(flash())
 app.use(session({secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS', resave: true, saveUninitialized: false}))
 app.set('view engine', 'hbs');
 hbs.registerHelper('ifauthor', function(user, author, options){
-  if(user == author)
-   {
+  // console.log(arguments)
+  console.log(typeof user)
+  console.log(typeof author)
+  console.log(arguments[0] == arguments[1])
+  if(user === author){
     return options.fn(this)
   }
   return options.inverse(this)

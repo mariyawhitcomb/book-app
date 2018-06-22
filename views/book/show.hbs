@@ -19,13 +19,14 @@
 {{#if book.notes}}
 <div class="collection brown lighten-3 brown-text">
 {{#each book.notes}}
-        <a href="#!" class="collection-item brown lighten-3 brown-text">{{ content }}</a>
-                {{#ifauthor currentUser._id author._id}}
-                <form method="POST" action="/user/notes/{{_id}}?_method=DELETE" class="row">
-                <input type="hidden" name="noteId" value="{{_id}}">
-                <a class="btn-flat collection-item brown-text" type="submit">DELETE</a>
-                </form>
-                {{/ifauthor}}
+  <a href="#!" class="collection-item brown lighten-3 brown-text">{{ content }}</a>
+    <h1>{{ ../currentUser._id }}</h1>
+    {{#ifauthor ../currentUser._id author._id}}
+      <form method="POST" action="/user/notes/{{_id}}?_method=DELETE" class="row-s">
+        <input type="hidden" name="noteId" value="{{_id}}">
+        <input class="btn-flat collection-item brown-text" type="submit" value="Delete">
+      </form>
+    {{/ifauthor}}
 {{/each}}
 </div>
 {{/if}}

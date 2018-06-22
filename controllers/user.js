@@ -57,21 +57,34 @@ module.exports = {
     delete: (req, res)=>{
         Note.findOne({_id: req.body.noteId})
         .then(note=>{
-        //     Promise.all([
-        //         note,
-        //         Book.findOne({_id: note.book._id})
-        //     ]).then(values=>{
-        //         console.log(values[0]._id)
-        //         console.log(values[1].notes.map(item => item._id));
-        //         console.log(values[1].notes.map(item => item._id).indexOf(values[0]._id))
-        //     })
-        // //     Book.findOne({_id: note.book._id})
-        // //     .then(book=>{
-        // //         console.log(book.notes.map(id=>id._id).indexOf(note._id))
-        // //         book.save()
-        // //     }).then(()=>{
-                note.remove()
-                res.redirect('/')
+            note.remove()
+                .then(note => {
+                    Book.findById(note.book)
+                        .then(book => {
+                            book.notes.id(note._id).remove()
+                            book.save().then(() => res.redirect(`/book/${note.book}`))
+                        })
+                })
+//5b2d15551b9dfb09c8fb4e85,
+            // Promise.all([
+            //     note,
+            //     Book.findOne({_id: note.book._id})
+            // ]).then(values=>{
+            //     console.log(values[0]._id)
+            //     console.log(values[1].notes)
+            //     console.log(values[1].notes.filter(note => note._id !== values[0]._id))
+            //     // console.log(values[1].notes.map(item => item._id));
+            //     // console.log(values[1].notes.map(item => item._id).indexOf(values[0]._id))
+            // })
+            // note.remove()
+            // .then(()=>{res.redirect('/')})
+            
+        //     Book.findOne({_id: note.book._id})
+        //     .then(book=>{
+        //         console.log(book.notes.map(id=>id._id).indexOf(note._id))
+        //         book.save()
+        //     }).then(()=>{
+                
         // })
         
     })

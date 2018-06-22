@@ -19,7 +19,6 @@ module.exports = {
                      check = true
                 }
                 res.render('book/show', { book: values[1], check })
-
                 })}
         else {
             Book.findOne({_id: req.params.id})
