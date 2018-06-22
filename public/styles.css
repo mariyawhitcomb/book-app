@@ -1,0 +1,51 @@
+nav {
+    position: fixed;
+    z-index: 100;
+    /* margin-top: -20px; */
+    top: 0;
+
+}
+body {
+    background-image: url("./public/132d7617fd430d120337741e7f86f4f5.jpg")!important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+
+.card {
+    top: 50px;
+    background: rgba(188, 171, 164, 0);
+}
+div.collection {
+    position: relative;
+    margin-top: 100px;
+    border-bottom: 1px solid rgba(169, 148, 142, 0.47);
+    background-color: rgba(188, 171, 164, 0.82);
+    
+}
+.collection-item {
+    background-color: rgba(109, 95, 91, 0.6);
+}
+form {
+    margin-top: 10vh;
+    background: rgba(188, 171, 164, 0.9);
+}
+h2 {
+   margin-top: 10vh;
+   color: #541804;
+}
+.text {color: #5f3426;font-size: 20px;}
+h2.text {
+    font-size: 58px;
+    color: #353130;
+    text-shadow: 4px 0px 12px #f1e0db;
+}
+
+.card-action {/* background-color: #cec1c100; */}
+input {
+    border-bottom: none;
+
+}
+form.row-s {
+    background-color: rgba(255, 255, 255, 0);
+}

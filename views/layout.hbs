@@ -8,19 +8,20 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <style>
-      body {
-        background-image: url("./public/132d7617fd430d120337741e7f86f4f5.jpg");
+      <link rel="stylesheet" type="text/css" href="/styles.css">
+    {{!-- <style>
+      body, .background {
+        background-image: url("./public/132d7617fd430d120337741e7f86f4f5.jpg")!important;
         
       }
       
-    </style>
+    </style> --}}
     </head>
     <body>
 
     <nav>
     <div class="nav-wrapper brown lighten-4">
-      <a href="/" class="brand-logo right brown-text">READ MORE BOOKS</a>
+      <a href="/" class="brand-logo right brown-text">NY Times Best Sellers</a>
       <ul id="nav-mobile" class="left hide-on-med-and-down">
         <li><a class="brown-text" href="/">Home</a></li>
         {{#if currentUser}}

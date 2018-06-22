@@ -1,3 +1,6 @@
+
+      
+  
     <div class="row">
     <div class="col l12 m6">
       <div class="card brown lighten-3">
@@ -14,9 +17,9 @@
     </div>
   </div>
 {{#if book.notes}}
-<div class="collection brown-text">
+<div class="collection brown lighten-3 brown-text">
 {{#each book.notes}}
-        <a href="#!" class="collection-item brown-text">{{ content }}</a>
+        <a href="#!" class="collection-item brown lighten-3 brown-text">{{ content }}</a>
                 {{#ifauthor currentUser._id author._id}}
                 <form method="POST" action="/user/notes/{{_id}}?_method=DELETE" class="row">
                 <input type="hidden" name="noteId" value="{{_id}}">
@@ -32,7 +35,7 @@
   {{#if check}}
   {{else}}
     <div class="card-action ">
-      <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row">
+      <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row-s">
         <input type="hidden" name="bookId" value="{{book._id}}">
         <p class="input-field inline col s2">
           <input class="btn brown lighten-3 brown-text" type="submit" value="Save to My Books">
@@ -48,7 +51,7 @@
 <div class="container">
 <div class="card">
   <div class="card-content">
-    <h4 class="card-title brown-text">Add a note:</h6>
+    <h2 class=" text">Add a note:</h2>
     <form method="POST" action="/book/{{book._id}}?_method=POST" class="row">
       <p class="input-field inline col s10">
         <label for="content"></label>
