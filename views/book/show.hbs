@@ -17,16 +17,12 @@
 <div class="collection brown-text">
 {{#each book.notes}}
         <a href="#!" class="collection-item brown-text">{{ content }}</a>
-        {{#ifauthor currentUser._id author._id}}
-        <form method="POST" action="/user/notes/{{_id}}?_method=DELETE" class="row">
-        <input type="hidden" name="noteId" value="{{_id}}">
-        <a class="btn-flat collection-item brown-text" type="submit">DELETE</a>
-        </form>
-      
-        {{!-- <input class="btn" type="submit" value="Delete note"> --}}
-        
-      
-  {{/ifauthor}}
+                {{#ifauthor currentUser._id author._id}}
+                <form method="POST" action="/user/notes/{{_id}}?_method=DELETE" class="row">
+                <input type="hidden" name="noteId" value="{{_id}}">
+                <a class="btn-flat collection-item brown-text" type="submit">DELETE</a>
+                </form>
+                {{/ifauthor}}
 {{/each}}
 </div>
 {{/if}}
@@ -44,11 +40,11 @@
       </form>
     </div>
     {{/if}}
-  {{/if}}
+  {{!-- {{/if}} --}}
   </div>
 
 
-{{#if currentUser}}
+{{!-- {{#if currentUser}} --}}
 <div class="container">
 <div class="card">
   <div class="card-content">
