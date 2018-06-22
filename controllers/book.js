@@ -7,12 +7,6 @@ var check = false
 module.exports = {
     show: (req, res) => {
         check = false
-        // if req.user
-        //    - find book and populate notes
-        //    - check if req.user._id is in book.users
-        //    - render book/show with book and whether user has saved book flag
-        // else 
-        //    - render book/show without 
         if(req.user){
             Promise.all([
                 User.findOne({_id: req.user._id}),
@@ -27,7 +21,7 @@ module.exports = {
                 res.render('book/show', { book: values[1], check })
 
                 })}
-        else{
+        else {
             Book.findOne({_id: req.params.id})
             .populate('notes')
             .then(book=>{
@@ -47,19 +41,22 @@ module.exports = {
                 author: values[0]._id,
                 book: values[1]._id
             })
-            values[1].populate('notes').save()
-            // .then(note=>{
-            //     values[0].notes.push(note)
-            //     values[1].notes.push(note)
-            // })
-            // .then(()=>{
-            //     values[0].save()
-            //     values[1].save()
-            // })
+            // values[1].populate('notes').save()
+            .then(note=>{
+                values[0].notes.push(note)
+                values[1].notes.push(note)
+            })
+            .then(()=>{
+                values[0].save()
+                values[1].save()
+
+            }).then(()=>{
                 res.render('book/show', {book: values[1]})
+            })
 
            
         })
+        
 },
     // update: (req, res)=>{
     //         Promise.all([

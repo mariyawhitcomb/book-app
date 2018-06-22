@@ -1,4 +1,4 @@
-<h2>Login</h2>
+<h2 class="brown-text">Login</h2>
 
 {{#if message}}
   <div class="alert alert-danger">{{message}}</div>
@@ -6,14 +6,14 @@
 
 <form method="POST" action="/user/login">
   <div class="form-group">
-    <label for="email">Email</label>
-    <input class="form-control" type="text" name="email" id="email">
+    <label class="brown-text" for="email">Email</label>
+    <input class="form-control brown-text" type="text" name="email" id="email">
   </div>
 
   <div class="form-group">
-    <label for="email">Password</label>
-    <input class="form-control" type="password" name="password" id="password">
+    <label class="brown-text" for="email">Password</label>
+    <input class="form-control brown-text" type="password" name="password" id="password">
   </div>
 
-  <input class="btn btn-default" type="submit">
+  <input class="btn btn-default brown lighten-3 brown-text" type="submit">
 </form>

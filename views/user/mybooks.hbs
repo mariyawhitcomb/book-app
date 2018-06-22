@@ -1,14 +1,16 @@
- <ul class="tweets">
-    {{#each user.books}}
-<div class="card">
-  <div class="card-content">
-    <a class="card-title" href="/book/{{_id}}">
-      {{ title }}
-    </a>
+{{#each user.books}}
+    <div class="row">
+    <div class="col l12 m6">
+      <div class="card brown lighten-3">
+        <div class="card-content brown-text">
+          <a href="/book/{{_id}}"><span class="card-title brown-text">{{ title }}<br>
+          by {{ author }}</span></a>
+          <p>{{ description }}</p>
+        </div>
+        <div class="card-action">
+        <a href="{{ book.amazon_product_url }}">Buy it</a> 
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="card-action">
-    <a href="" class="">{{ author }}</a>
-  </div>
-  </div>
-    {{/each}}
-  </ul>
+{{/each}}

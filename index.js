@@ -24,15 +24,12 @@ app.use(morgan('dev'))
 app.use(flash())
 app.use(session({secret: 'WDI-GENERAL-ASSEMBLY-EXPRESS', resave: true, saveUninitialized: false}))
 app.set('view engine', 'hbs');
-hbs.registerHelper('ifcustom', function(id, arr, options){
-  if(arr.some(function(user){
-   return user._id === id
-    
-  })) 
+hbs.registerHelper('ifauthor', function(user, author, options){
+  if(user == author)
    {
-    return options.inverse(this)
+    return options.fn(this)
   }
-  return options.fn(this)
+  return options.inverse(this)
 })
 app.use(express.static(__dirname + '/public'));
 hbs.registerPartials(__dirname + "/views/partials");

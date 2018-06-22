@@ -1,18 +1,22 @@
 {{#if books}}
-  <ul class="tweets">
-    {{#each books}}
-<div class="card">
-  <div class="card-content">
-    <a class="card-title" href="/book/{{id}}">
-      {{ title }}
-    </a>
+<ul>
+{{#each books}}
+<div class="row">
+    <div class="col l12 m6">
+      <div class="card brown lighten-3">
+        <div class="card-content brown-text">
+          <a href="/book/{{id}}"><span class="card-title brown-text">{{ title }}<br>
+          by {{ author }}</span></a>
+          {{!-- <p>I am a very simple card. I am good at containing small bits of information.
+          I am convenient because I require little markup to use effectively.</p> --}}
+        </div>
+        {{!-- <div class="card-action">
+          <a href="#">This is a link</a>
+          <a href="#">This is a link</a>
+        </div> --}}
+      </div>
+    </div>
   </div>
-  <div class="card-action">
-    <a href="" class="">{{ author }}</a>
-    {{!-- <span class="tweet__date">{{ createdAt }}</span> --}}
-    {{!-- <span class="tweet_comments">{{ comments.length }} Comments</span> --}}
-  </div>
-  </div>
-    {{/each}}
-  </ul>
+{{/each}}
+</ul>
 {{/if}}
