@@ -49,3 +49,13 @@ input {
 form.row-s {
     background-color: rgba(255, 255, 255, 0);
 }
+.notes {margin-top: 10px;background-color: #bcaba4;display: flex;justify-content:  space-between;flex-direction:  row;height: 50px;align-content:  center;align-items:  center;top: 71px;}
+.container {
+    position: relative;
+}
+.delete-btn {
+    margin: 7px;
+}
+.allnotes {
+    margin-top:  100px;
+}
