@@ -33,8 +33,8 @@
 {{/if}}
 </div>    
   
-  {{#if currentUser}}
-  {{#if check}}
+{{#if currentUser}}
+{{#if check}}
   {{else}}
     <div class="card-action ">
       <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row-s">
@@ -45,11 +45,9 @@
       </form>
     </div>
     {{/if}}
-  {{!-- {{/if}} --}}
+  {{/if}}
   </div>
-
-
-{{!-- {{#if currentUser}} --}}
+{{#if currentUser}}
 <div class="container">
 <div class="card">
   <div class="card-content">
