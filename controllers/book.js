@@ -17,11 +17,11 @@ module.exports = {
           check = true;
         }
 
-        if (req.accepts("application/json")) {
-          res.json({ book: values[1], check });
-        } else {
-          res.render("book/show", { book: values[1], check });
-        }
+        // if (req.accepts("application/json")) {
+        //   res.json({ book: values[1], check });
+        // } else {
+        res.render("book/show", { book: values[1], check });
+        // }
       });
     } else {
       Book.findOne({ _id: req.params.id })
