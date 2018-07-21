@@ -6,15 +6,15 @@ var check;
 
 module.exports = {
   show: (req, res) => {
-    check = false;
+    check = true;
     if (req.user) {
       Promise.all([
         User.findOne({ _id: req.user._id }),
         Book.findOne({ _id: req.params.id }).populate("notes")
       ]).then(values => {
         Note.find({ book: values[1]._id }).populate("author");
-        if (values[1].users.indexOf(values[0]._id) >= 0) {
-          check = true;
+        if (values[1].users.indexOf(values[0]._id) < 0) {
+          check = false;
         }
 
         // if (req.accepts("application/json")) {
@@ -52,7 +52,8 @@ module.exports = {
           values[1].save();
         })
         .then(() => {
-          res.render("book/show", { book: values[1] });
+          res.redirect(`${values[1]._id}`);
+          // , { book: values[1] });
         });
     });
   },

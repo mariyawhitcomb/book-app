@@ -1,68 +1,64 @@
-
-      
-  
-    <div class="row">
-    <div class="col l12 m6">
-      <div class="card brown lighten-3">
-        <div class="card-content brown-text">
-          <a href="/book/{{book._id}}"><span class="card-title brown-text">{{ book.title }}<br>
-          by {{ book.author }}</span></a>
-          <p>{{ book.description }}</p>
-        </div>
-        <div class="card-action">
-        <a href="{{ book.amazon_product_url }}">Buy it</a> 
-          {{!-- <a href="#">This is a link</a> --}}
-        </div>
+<div class="row">
+  <div class="col l12 m6">
+    <div class="card brown lighten-3">
+      <div class="card-content brown-text">
+        <a href="/book/{{book._id}}">
+          <span class="card-title brown-text">{{ book.title }}
+            <br> by {{ book.author }}</span>
+        </a>
+        <p>{{ book.description }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{{ book.amazon_product_url }}">Buy it</a>
+        {{!--
+        <a href="#">This is a link</a> --}}
       </div>
     </div>
   </div>
-  <div class="allnotes">
-{{#if book.notes}}
-{{#each book.notes}}
-{{!-- <div class="collection brown lighten-3 brown-text"> --}}
-<div class="notes">
-  <a href="#!" class="collection-item brown lighten-3 brown-text">{{ content }}</a>
+</div>
+{{#if currentUser}} {{#if check}} {{else}}
+<div class="card-action ">
+  <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row-s">
+    <input type="hidden" name="bookId" value="{{book._id}}">
+    <p class="input-field inline col s2">
+      <input class="btn brown lighten-3 brown-text" type="submit" value="Save to My Books">
+    </p>
+  </form>
+</div>
+{{/if}} {{/if}}
+<div class="allnotes">
+  {{#if book.notes}} {{#each book.notes}} {{!--
+  <div class="collection brown lighten-3 brown-text"> --}}
+    <div class="notes">
+      <a href="#!" class="collection-item brown lighten-3 brown-text">{{ content }}</a>
 
-{{#ifauthor ../currentUser._id author._id}}
+      {{!-- {{#ifauthor ../currentUser._id author._id}} --}}
       <form method="POST" action="/user/notes/{{_id}}?_method=DELETE" class="delete-btn">
         <input type="hidden" name="noteId" value="{{_id}}">
         <input class="btn-flat collection-item brown-text" type="submit" value="Delete">
       </form>
-    {{/ifauthor}}</div>
-{{/each}}
-{{/if}}
-</div>    
-  
+      {{!-- {{/ifauthor}} --}}
+    </div>
+    {{/each}} {{/if}}
+  </div>
+
+
+</div>
 {{#if currentUser}}
-{{#if check}}
-  {{else}}
-    <div class="card-action ">
-      <form method="POST" action="/user/{{currentUser._id}}?_method=PUT" class="row-s">
-        <input type="hidden" name="bookId" value="{{book._id}}">
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+      <h2 class=" text">Add a note:</h2>
+      <form method="POST" action="/book/{{book._id}}?_method=POST" class="row">
+        <p class="input-field inline col s10">
+          <label for="content"></label>
+          <input type="text" name="content" id="">
+        </p>
         <p class="input-field inline col s2">
-          <input class="btn brown lighten-3 brown-text" type="submit" value="Save to My Books">
+          <input class="btn brown lighten-3 brown-text" type="submit" value="Submit">
         </p>
       </form>
     </div>
-    {{/if}}
-  {{/if}}
   </div>
-{{#if currentUser}}
-<div class="container">
-<div class="card">
-  <div class="card-content">
-    <h2 class=" text">Add a note:</h2>
-    <form method="POST" action="/book/{{book._id}}?_method=POST" class="row">
-      <p class="input-field inline col s10">
-        <label for="content"></label>
-        <input type="text" name="content" id="">
-      </p>
-      <p class="input-field inline col s2">
-        <input class="btn brown lighten-3 brown-text" type="submit" value="Submit">
-      </p>
-    </form>
-  </div>
-</div>
 </div>
 {{/if }}
-
